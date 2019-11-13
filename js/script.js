@@ -23,9 +23,16 @@ const cvvInput = $('#cvv');
 nameInput.focus();
 
 /***
-”Job Role” section
-Include a text field that will be revealed when the "Other" option is selected from the "Job Role" drop down menu.
-Give the field an id of “other-title,” and add the placeholder text of "Your Job Role".
-Note: You'll need to add the "Other" job role input directly into the HTML and hide it initially with JS in order to get this feature to work when JS is disabled, which is a requirement below.
+    "Job Role" section
+    Included a text field with id of “other-title" and the placeholder text of "Your Job Role" to index.html, and with the following code it be revealed when the "Other" option is selected from the "Job Role" drop down menu.
 ***/
+$('#other-title').hide(); //To make sure at start we do not have the other title field showing.
+titleInput.change(function() {
+    if($(this).val() === "other") {
+        $('#other-title').show();
+    }
+    else {
+        $('#other-title').hide();
+    }
+});
 
