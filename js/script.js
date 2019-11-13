@@ -38,19 +38,15 @@ $titleInput.change(function() {
 
 /***
 "T-Shirt Info" section
-    When a selection for a theme is not made the color field is disabled and only reads 'Please select a T-shirt theme'.
+    For exceeding expectations the color select section is hidden when design select is not made.(It used to be : When a selection for a theme is not made the color field is disabled and only reads 'Please select a T-shirt theme'.)
     When a selection for a theme is made the color options match the selection and is updated dynamically.
 ***/
 
-if ( $designSelect.val() === 'Select Theme' ) { //Color options disabled thus no options appear, field reads 'Please select a T-shirt theme'.
-    $colorSelect.prepend('<option value="disabled">Please select a T-shirt theme.</option>')
-    $colorSelect.val('disabled');
-    $colorSelect.attr('disabled', true);
+if ( $designSelect.val() === 'Select Theme' ) { //Color options is not shown
+    $('#colors-js-puns').hide();
 }
 $designSelect.change(() => {
-    $colorSelect.removeAttr("disabled");
-    $('#color option[value="disabled"]').hide();
-
+    $('#colors-js-puns').show();
     // the theme tshirts are collected under related variables
     let $themeJSPuns = $('#color option[value="cornflowerblue"],[value="darkslategrey"],[value="gold"]');
     let $themeIheartJS = $('#color option[value="tomato"],[value="steelblue"],[value="dimgrey"]');
@@ -67,10 +63,8 @@ $designSelect.change(() => {
         $themeIheartJS.show();
         $colorSelect.val('tomato');
 
-        //If the user selects the empty option for selecting theme, the color dropdown is again disabled and shows only the message.
+        //If the user selects the empty option for selecting theme, the color select area is not shown
     } else if ($designSelect.val() === 'Select Theme') {
-        $('#color option[value="disabled"]').show();
-        $colorSelect.val('disabled');
-        $colorSelect.attr('disabled', true);
+        $('#colors-js-puns').hide();
     }
 })
